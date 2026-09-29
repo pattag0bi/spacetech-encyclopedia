@@ -1,0 +1,1055 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Space Technology Value Chain — A First-Principles Encyclopedia</title>
+<style>
+:root{
+  --paper:#EDEDE6; --panel:#F6F6F1; --ink:#122B3D; --ink2:#4A6274; --ink3:#7A8C96;
+  --rule:#CBCEC4; --rule2:#DEE0D7; --oxide:#B4471F; --phos:#0F6E67; --gold:#8A6A22;
+  --shadow:rgba(18,43,61,.10);
+  --serif:Charter,"Bitstream Charter","Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif;
+  --mono:ui-monospace,"SF Mono",Menlo,"DejaVu Sans Mono",Consolas,monospace;
+}
+@media (prefers-color-scheme:dark){
+  :root{--paper:#0C1820; --panel:#122430; --ink:#DFE5E2; --ink2:#9DB0B8; --ink3:#6F858F;
+    --rule:#20353F; --rule2:#1A2C36; --oxide:#E4783F; --phos:#43B4A6; --gold:#C9A24C;
+    --shadow:rgba(0,0,0,.4);}
+}
+:root[data-theme="dark"]{--paper:#0C1820; --panel:#122430; --ink:#DFE5E2; --ink2:#9DB0B8; --ink3:#6F858F;
+  --rule:#20353F; --rule2:#1A2C36; --oxide:#E4783F; --phos:#43B4A6; --gold:#C9A24C; --shadow:rgba(0,0,0,.4);}
+:root[data-theme="light"]{--paper:#EDEDE6; --panel:#F6F6F1; --ink:#122B3D; --ink2:#4A6274; --ink3:#7A8C96;
+  --rule:#CBCEC4; --rule2:#DEE0D7; --oxide:#B4471F; --phos:#0F6E67; --gold:#8A6A22; --shadow:rgba(18,43,61,.10);}
+
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--serif);
+  font-size:17px;line-height:1.62;-webkit-font-smoothing:antialiased}
+.lbl,.mono{font-family:var(--mono)}
+.lbl{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink3)}
+h1,h2,h3,h4{text-wrap:balance;line-height:1.15;margin:0}
+a{color:inherit;text-decoration-color:var(--oxide);text-underline-offset:3px}
+:focus-visible{outline:2px solid var(--oxide);outline-offset:3px}
+table{border-collapse:collapse;width:100%;font-size:14px}
+th,td{text-align:left;padding:.5em .8em;border-bottom:1px solid var(--rule2);vertical-align:top}
+th{font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--ink3);border-bottom:1px solid var(--rule);white-space:nowrap}
+td.n,th.n{text-align:right;font-family:var(--mono);font-variant-numeric:tabular-nums;font-size:13px;white-space:nowrap}
+.scroll{overflow-x:auto;-webkit-overflow-scrolling:touch}
+
+/* ---------- shell ---------- */
+.shell{display:grid;grid-template-columns:216px minmax(0,1fr);gap:0;max-width:1420px;margin:0 auto}
+.rail{position:sticky;top:0;align-self:start;height:100vh;overflow-y:auto;padding:34px 18px 40px 26px;
+  border-right:1px solid var(--rule);display:flex;flex-direction:column;gap:2px}
+.rail .brand{font-size:13px;line-height:1.3;margin-bottom:18px;padding-bottom:14px;border-bottom:1px solid var(--rule)}
+.rail a{display:flex;gap:9px;padding:4px 0;font-family:var(--mono);font-size:11.5px;letter-spacing:.02em;
+  color:var(--ink3);text-decoration:none;border-left:2px solid transparent;padding-left:9px;margin-left:-9px}
+.rail a:hover{color:var(--ink)}
+.rail a.on{color:var(--oxide);border-left-color:var(--oxide)}
+.rail a i{font-style:normal;opacity:.55;min-width:1.6em}
+main{min-width:0;padding:0 0 120px}
+.col{max-width:70ch;padding:0 28px;margin:0 auto}
+.bleed{max-width:1080px;margin:34px auto;padding:0 28px}
+section{padding-top:8px;scroll-margin-top:20px}
+@media(max-width:900px){
+  .shell{grid-template-columns:1fr}
+  .rail{position:static;height:auto;border-right:0;border-bottom:1px solid var(--rule);
+    flex-direction:row;flex-wrap:wrap;gap:4px 14px;padding:16px 20px}
+  .rail .brand{flex-basis:100%;margin:0 0 6px;padding:0;border:0}
+  .rail a{border-left:0;padding-left:0;margin-left:0}
+  .rail a.on{border-left:0}
+}
+
+/* ---------- hero ---------- */
+.hero{border-bottom:1px solid var(--rule);padding:64px 0 40px;position:relative;overflow:hidden}
+.hero .col{position:relative;z-index:2}
+.hero h1{font-size:clamp(38px,6.2vw,72px);font-weight:600;letter-spacing:-.02em;margin:.28em 0 .34em}
+.hero h1 em{font-style:italic;color:var(--oxide)}
+.hero p{font-size:19px;color:var(--ink2);max-width:56ch}
+.gwell{position:absolute;inset:0;width:100%;height:100%;opacity:.5;z-index:1}
+.rule{height:1px;background:var(--rule);border:0;margin:0}
+
+/* ---------- chapters ---------- */
+.chead{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 14px;margin:66px 0 6px;padding-top:26px;border-top:2px solid var(--ink)}
+.chead .num{font-family:var(--mono);font-size:34px;font-weight:600;color:var(--oxide);
+  font-variant-numeric:tabular-nums;letter-spacing:-.03em}
+.chead h2{font-size:29px;font-weight:600;letter-spacing:-.01em}
+.chead .kick{font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--ink3);margin-left:auto;white-space:nowrap;padding-bottom:5px}
+@media(max-width:600px){.chead .kick{margin-left:0;flex-basis:100%;white-space:normal}}
+.dek{font-size:18px;color:var(--ink2);margin:.5em 0 1.4em;font-style:italic}
+p{margin:0 0 1.05em}
+h3{font-size:19px;font-weight:600;margin:2em 0 .55em}
+h3 .tick{color:var(--oxide);font-family:var(--mono);font-size:13px;margin-right:.5em}
+h4{font-family:var(--mono);font-size:11px;letter-spacing:.13em;text-transform:uppercase;color:var(--ink3);margin:1.7em 0 .5em}
+ul{padding-left:1.15em;margin:0 0 1.1em}li{margin:.3em 0}
+li::marker{color:var(--oxide)}
+strong{font-weight:600}
+.q{font-family:var(--mono);font-size:.9em;font-variant-numeric:tabular-nums;color:var(--phos);white-space:nowrap}
+
+/* ---------- devices ---------- */
+.law{border-left:3px solid var(--oxide);background:var(--panel);padding:16px 20px;margin:1.6em 0}
+.law .lbl{color:var(--oxide);display:block;margin-bottom:6px}
+.law .eq{font-family:var(--mono);font-size:16px;margin:.4em 0 .6em;color:var(--ink)}
+.law .legend{display:flex;flex-wrap:wrap;gap:6px 22px;margin:0 0 1em;padding:10px 0 12px;
+  border-top:1px solid var(--rule2);border-bottom:1px solid var(--rule2)}
+.law .legend > div{display:flex;align-items:baseline;gap:7px;min-width:0}
+.law .legend dt{font-family:var(--mono);font-size:13px;color:var(--oxide);white-space:nowrap;margin:0}
+.law .legend dd{font-size:12.5px;color:var(--ink3);margin:0}
+.tip{position:relative;cursor:help;border-bottom:1px dotted var(--oxide)}
+.tip .tipbox{position:absolute;left:0;bottom:calc(100% + 10px);width:min(250px,calc(100vw - 40px));
+  background:#0F1F29;color:#EDEDE6;font-family:var(--serif);font-size:12.5px;line-height:1.55;
+  font-weight:400;letter-spacing:normal;text-transform:none;white-space:normal;
+  padding:11px 13px;border:1px solid var(--oxide);box-shadow:0 6px 18px var(--shadow);
+  display:none;z-index:6}
+.tip .tipbox.wide{width:min(288px,calc(100vw - 40px))}
+.tip .tipbox svg{display:block;margin:0 auto}
+.tip .tipbox .cap{margin-top:8px;font-size:11.5px;line-height:1.5;color:#C9D3D6}
+.tip .tipbox::after{content:"";position:absolute;top:100%;left:14px;
+  border:6px solid transparent;border-top-color:var(--oxide)}
+.tip:hover .tipbox,.tip:focus .tipbox,.tip:focus-visible .tipbox{display:block;animation:tipin .15s ease}
+@keyframes tipin{from{opacity:0;transform:translateY(4px)}}
+@media (prefers-reduced-motion:reduce){.tip .tipbox{animation:none!important}}
+h5 .tip{font-weight:600}
+.law p:last-child{margin:0;font-size:15.5px;color:var(--ink2)}
+figure{margin:0}
+figcaption{font-family:var(--mono);font-size:11.5px;line-height:1.5;color:var(--ink3);margin-top:10px;max-width:74ch}
+figcaption b{color:var(--ink2);font-weight:400}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(214px,1fr));gap:14px;margin:1.4em 0}
+.orbtool{background:var(--panel);border:1px solid var(--rule2);padding:18px 20px;margin-top:0}
+.orbreadout{display:flex;flex-wrap:wrap;gap:26px;margin-top:16px}
+.orbreadout > div .mono{font-size:20px;margin-top:2px;font-variant-numeric:tabular-nums}
+.card{background:var(--panel);border:1px solid var(--rule2);padding:14px 16px 16px}
+.card h5{margin:0 0 .35em;font-size:15.5px;font-weight:600}
+.card p{margin:0;font-size:14px;line-height:1.5;color:var(--ink2)}
+.card .lbl{display:block;margin-bottom:8px}
+.pill{display:inline-block;font-family:var(--mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;
+  padding:2px 7px;border:1px solid var(--rule);color:var(--ink3);margin:0 4px 4px 0}
+.pill.hot{border-color:var(--oxide);color:var(--oxide)}
+.pill.cool{border-color:var(--phos);color:var(--phos)}
+svg{display:block;max-width:100%;height:auto}
+.sw{font-family:var(--mono);font-size:11px;fill:var(--ink3)}
+.sv{font-family:var(--mono);font-size:12px;fill:var(--ink);font-variant-numeric:tabular-nums}
+.st{font-family:var(--mono);font-size:12.5px;fill:var(--ink);letter-spacing:.02em}
+</style>
+<link rel="stylesheet" href="atlas/atlas.css">
+
+<div class="shell">
+<nav class="rail" aria-label="Contents">
+  <div class="brand"><span class="lbl">Encyclopedia of</span><br><strong>Space Technology</strong><br>
+  <span class="lbl">Value chain, from physics up</span></div>
+  <a href="#c00"><i>00</i>Physics floor</a>
+  <a href="#c01"><i>01</i>Matter</a>
+  <a href="#c02"><i>02</i>Components</a>
+  <a href="#c03"><i>03</i>Machines</a>
+  <a href="#c04"><i>04</i>Vehicles</a>
+  <a href="#c05"><i>05</i>Access &amp; orbits</a>
+  <a href="#c06"><i>06</i>Operations</a>
+  <a href="#c07"><i>07</i>Signal &amp; data</a>
+  <a href="#c08"><i>08</i>Applications</a>
+  <a href="#c09"><i>09</i>Value capture</a>
+  <a href="#c10"><i>10</i>Constraints</a>
+  <a href="#c11"><i>11</i>Milestones</a>
+</nav>
+
+<main>
+<header class="hero">
+  <svg class="gwell" viewBox="0 0 1200 420" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+    <g fill="none" stroke="var(--rule)" stroke-width="1">
+      <path d="M0 300 C 260 300 380 120 600 120 C 820 120 940 300 1200 300"/>
+      <path d="M0 330 C 260 330 370 165 600 165 C 830 165 940 330 1200 330"/>
+      <path d="M0 360 C 260 360 360 210 600 210 C 840 210 940 360 1200 360"/>
+      <path d="M0 390 C 260 390 350 255 600 255 C 850 255 940 390 1200 390"/>
+      <path d="M0 270 C 260 270 390 75 600 75 C 810 75 940 270 1200 270"/>
+    </g>
+    <g stroke="var(--rule2)" stroke-width="1">
+      <line x1="120" y1="0" x2="120" y2="420"/><line x1="360" y1="0" x2="360" y2="420"/>
+      <line x1="600" y1="0" x2="600" y2="420"/><line x1="840" y1="0" x2="840" y2="420"/>
+      <line x1="1080" y1="0" x2="1080" y2="420"/>
+    </g>
+    <circle cx="600" cy="120" r="4" fill="var(--oxide)"/>
+  </svg>
+  <div class="col">
+    <span class="lbl">A first-principles breakdown · 12 chapters · 2026 edition</span>
+    <h1>Everything in space comes down to <em>one brutal equation</em>.</h1>
+    <p>Most write-ups of space technology just hand you a list of objects — rockets, satellites, stations, probes. That misses the whole point. Every one of those objects exists to answer one brutal physics problem: it takes a huge amount of energy to climb out of Earth's gravity well, and a rocket pays for that energy by burning most of its own body weight as fuel. This page follows that one idea all the way up — through raw materials, parts, machines, finished vehicles, orbit, and the signals they beam home — and ends up somewhere surprising: the real money in space isn't in the rocket at all.</p>
+  </div>
+</header>
+
+<div class="col">
+
+<section id="c00">
+  <div class="chead"><span class="num">00</span><h2>The physics floor</h2><span class="kick">Tier zero · non-negotiable</span></div>
+  <p class="dek">Four numbers explain almost everything that follows. Once you know them, the rest of this page is just people cleverly working around them.</p>
+
+  <h3><span class="tick">§</span>The energy is cheap. The delivery is not.</h3>
+  <p>Here is a fact that should stop you in your tracks: lifting one kilogram to low orbit takes about
+  <span class="q">34 MJ</span> — roughly <span class="q">9.4 kWh</span>, the same energy as leaving a
+  100-watt light bulb burning for about four days straight. At what your power company charges, that is
+  worth <strong>under one dollar</strong>. And yet launch prices have historically run ten to fifty
+  <em>thousand</em> times that. Almost none of the gap is the energy itself — in fact 90% of that energy
+  is not even about climbing up, it is about going sideways fast enough — <span class="q">7.8 km/s</span> —
+  to keep missing the ground as you fall around the planet. The real cost is that you must deliver it all
+  in a few violent minutes, aboard a machine that carries its own oxygen supply and, until recently, was
+  thrown away after one use.</p>
+
+  <div class="law">
+    <span class="lbl">Tsiolkovsky's rocket equation, 1903</span>
+    <div class="eq">Δv = I<sub>sp</sub> · g₀ · ln( m₀ / m<sub>f</sub> )</div>
+    <dl class="legend">
+      <div><dt>Δv</dt><dd>velocity change available, m/s</dd></div>
+      <div><dt class="tip" tabindex="0">I<sub>sp</sub><span class="tipbox">Specific impulse is how efficiently an engine uses fuel — literally how many seconds one kilogram of propellant can keep producing one kilogram of force. A higher number means the engine squeezes more push out of every kilogram it burns. It is the rocket-engine equivalent of miles per gallon.</span></dt><dd>specific impulse, s</dd></div>
+      <div><dt>g₀</dt><dd>standard gravity, 9.80665 m/s²</dd></div>
+      <div><dt>m₀ / m<sub>f</sub></dt><dd>rocket fuelled ("wet") over rocket empty ("dry") — the mass ratio</dd></div>
+    </dl>
+    <p>How much speed a rocket can gain grows only as the <em>logarithm</em> of how much heavier it is fueled than empty. Flip that around, which is what actually matters when designing one, and it turns vicious: mass grows <em>exponentially</em> with the mission. Want 10% more speed? You do not add 10% more fuel — you multiply the fuel load.</p>
+  </div>
+
+  <p>Getting to orbit needs about <span class="q">9.4 km/s</span> of speed change in total — <span class="q">7.8</span>
+  for going fast enough sideways, plus roughly <span class="q">1.6</span> wasted fighting gravity, air and
+  steering on the way up. Feed that into a decent kerosene engine (<span class="q">I<sub>sp</sub> ≈ 340 s</span>,
+  a measure of fuel efficiency) and the rocket must be about <span class="q">16.7:1</span>, full versus
+  empty. Only about six percent of what sits on the pad is allowed to be anything other than fuel — tanks,
+  engines, wiring, nose cone, <em>and</em> your actual cargo, all squeezed into that sliver. The cargo alone
+  is usually just <span class="q">2%</span> to <span class="q">4%</span>. This single number explains almost
+  every strange thing about how spacecraft are built: the obsession with grams, the exotic metals, the solar
+  panels that fold up like origami instead of just being bigger.</p>
+
+  <p>There are only two real ways out of the trap, and the whole industry is built around them. <strong>Staging</strong> drops the empty tanks as you climb, so the equation basically restarts with a lighter rocket each time. <strong>Reuse</strong> is sneakier — it does not make the equation any easier at all. What it does is let you fly the same expensive engine and tank a hundred times instead of once, dividing its cost by a hundred. You pay for that with performance, since fuel has to be held back to fly the booster home instead of burning it all going up, but you win on cost. That single trade-off has been the biggest commercial decision in rocketry over the last fifteen years.</p>
+</section>
+</div>
+
+<div class="bleed">
+<figure>
+  <span class="lbl">Figure 00.1 — the Δv ladder</span>
+  <svg viewBox="0 0 1020 340" role="img" aria-label="Cumulative delta-v ladder from Earth's surface to interplanetary destinations">
+    <g stroke="var(--rule2)" stroke-width="1">
+      <line x1="150" y1="30" x2="150" y2="300"/><line x1="320" y1="30" x2="320" y2="300"/>
+      <line x1="490" y1="30" x2="490" y2="300"/><line x1="660" y1="30" x2="660" y2="300"/>
+      <line x1="830" y1="30" x2="830" y2="300"/><line x1="1000" y1="30" x2="1000" y2="300"/>
+    </g>
+    <line x1="150" y1="300" x2="1010" y2="300" stroke="var(--ink3)" stroke-width="1"/>
+    <text class="sw" x="150" y="322" text-anchor="middle">0</text>
+    <text class="sw" x="320" y="322" text-anchor="middle">4</text>
+    <text class="sw" x="490" y="322" text-anchor="middle">8</text>
+    <text class="sw" x="660" y="322" text-anchor="middle">12</text>
+    <text class="sw" x="830" y="322" text-anchor="middle">16</text>
+    <text class="sw" x="1000" y="322" text-anchor="middle">20</text>
+    <text class="sw" x="580" y="338" text-anchor="middle">CUMULATIVE Δv FROM EARTH'S SURFACE (km/s) · 42.5 px per km/s</text>
+
+    <g>
+      <text class="st" x="0" y="48">Low Earth orbit</text>
+      <rect x="150" y="34" width="400" height="17" fill="var(--oxide)"/>
+      <text class="sv" x="562" y="48">9.4</text>
+      <text class="sw" x="0" y="64">200–2000 km</text>
+    </g>
+    <g>
+      <text class="st" x="0" y="98">Transfer to GEO</text>
+      <rect x="150" y="84" width="400" height="17" fill="var(--oxide)" opacity=".35"/>
+      <rect x="550" y="84" width="104" height="17" fill="var(--phos)"/>
+      <text class="sv" x="666" y="98">11.8</text>
+      <text class="sw" x="0" y="114">+2.44 km/s from LEO</text>
+    </g>
+    <g>
+      <text class="st" x="0" y="148">Geostationary</text>
+      <rect x="150" y="134" width="504" height="17" fill="var(--oxide)" opacity=".35"/>
+      <rect x="654" y="134" width="62" height="17" fill="var(--phos)"/>
+      <text class="sv" x="728" y="148">13.3</text>
+      <text class="sw" x="0" y="164">+1.47 km/s circularise</text>
+    </g>
+    <g>
+      <text class="st" x="0" y="198">Lunar surface</text>
+      <rect x="150" y="184" width="400" height="17" fill="var(--oxide)" opacity=".35"/>
+      <rect x="550" y="184" width="133" height="17" fill="var(--phos)"/>
+      <rect x="683" y="184" width="119" height="17" fill="var(--gold)"/>
+      <text class="sv" x="814" y="198">15.4</text>
+      <text class="sw" x="0" y="214">TLI 3.12 · descent 2.9 km/s</text>
+    </g>
+    <g>
+      <text class="st" x="0" y="248">Mars surface</text>
+      <rect x="150" y="234" width="400" height="17" fill="var(--oxide)" opacity=".35"/>
+      <rect x="550" y="234" width="153" height="17" fill="var(--phos)"/>
+      <rect x="703" y="234" width="30" height="17" fill="var(--gold)"/>
+      <text class="sv" x="745" y="248">13.5</text>
+      <text class="sw" x="0" y="264">TMI 3.6 km/s · aerobraked</text>
+    </g>
+    <g>
+      <text class="st" x="0" y="290">Solar escape</text>
+      <rect x="150" y="276" width="400" height="17" fill="var(--oxide)" opacity=".35"/>
+      <rect x="550" y="276" width="365" height="17" fill="var(--phos)" opacity=".5"/>
+      <text class="sv" x="927" y="290">~18</text>
+    </g>
+  </svg>
+  <figcaption><b>Look closely at just the first bar and you have basically understood the whole industry.</b> Climbing off Earth's surface eats about 70% of the total energy budget to reach almost anywhere else in the solar system. Once in low orbit, you are, energetically speaking, already halfway to everywhere. That is why unglamorous ideas like refueling in space, letting a planet's atmosphere do your braking for free (Mars hands you more than 4 km/s that way), and slow, ultra-efficient electric engines matter enormously, even though none of them look exciting in a highlight reel.</figcaption>
+</figure>
+</div>
+
+<div class="col">
+  <h3><span class="tick">§</span>Try it yourself — feel the equation bite</h3>
+  <p>Pick a destination and an engine below. Watch the bar — it shows how much of the rocket on the pad is allowed to be anything besides fuel: the metal, the engines, the wiring, and whatever you are actually trying to deliver.</p>
+</div>
+
+<div class="bleed">
+<div class="card" style="padding:20px 22px">
+  <span class="lbl">Interactive · Tsiolkovsky solver</span>
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:20px;margin-top:14px">
+    <label style="display:block">
+      <span class="lbl">Mission Δv — <span class="mono" id="dvv" style="color:var(--oxide)">9400</span> m/s</span>
+      <input id="dv" type="range" min="1000" max="16000" step="100" value="9400" style="width:100%;accent-color:var(--oxide);margin-top:8px">
+      <span class="lbl" id="dvn">Low Earth orbit, single stage</span>
+    </label>
+    <label style="display:block">
+      <span class="lbl">Specific impulse — <span class="mono" id="ispv" style="color:var(--oxide)">340</span> s</span>
+      <input id="isp" type="range" min="230" max="465" step="1" value="340" style="width:100%;accent-color:var(--oxide);margin-top:8px">
+      <span class="lbl" id="ispn">Kerolox, gas generator</span>
+    </label>
+  </div>
+  <div style="display:flex;flex-wrap:wrap;gap:28px;margin-top:22px;align-items:flex-end">
+    <div style="flex:0 0 auto">
+      <span class="lbl">The vehicle on the pad</span>
+      <svg viewBox="0 0 100 240" width="76" height="182" style="display:block;margin-top:8px" aria-label="Rocket cross-section showing propellant versus hardware fraction">
+        <defs>
+          <clipPath id="rocketClip">
+            <path d="M50 4 L72 44 L72 208 Q72 220 60 220 L40 220 Q28 220 28 208 L28 44 Z"/>
+          </clipPath>
+        </defs>
+        <g clip-path="url(#rocketClip)">
+          <rect id="rdry" x="26" y="4" width="48" height="14" fill="var(--phos)"/>
+          <rect id="rfuel" x="26" y="18" width="48" height="202" fill="var(--oxide)" opacity=".8"/>
+        </g>
+        <path d="M50 4 L72 44 L72 208 Q72 220 60 220 L40 220 Q28 220 28 208 L28 44 Z"
+          fill="none" stroke="var(--ink3)" stroke-width="1.5"/>
+        <line x1="28" y1="44" x2="72" y2="44" stroke="var(--ink3)" stroke-width="1"/>
+        <path d="M28 190 L14 224 L28 214 Z" fill="none" stroke="var(--ink3)" stroke-width="1.5"/>
+        <path d="M72 190 L86 224 L72 214 Z" fill="none" stroke="var(--ink3)" stroke-width="1.5"/>
+      </svg>
+    </div>
+    <div><span class="lbl">Mass ratio m₀/m<sub>f</sub></span>
+      <div class="mono" id="mr" style="font-size:30px;font-variant-numeric:tabular-nums">16.7 : 1</div></div>
+    <div><span class="lbl">Everything-but-propellant</span>
+      <div class="mono" id="pf" style="font-size:30px;color:var(--phos);font-variant-numeric:tabular-nums">5.99 %</div></div>
+    <div style="flex:1;min-width:240px">
+      <span class="lbl">Composition of vehicle on the pad</span>
+      <div style="display:flex;height:26px;border:1px solid var(--rule);margin-top:8px">
+        <div id="bprop" style="background:var(--oxide);opacity:.75;width:94%"></div>
+        <div id="bdry" style="background:var(--phos);width:6%"></div>
+      </div>
+      <span class="lbl" style="display:block;margin-top:6px"><span style="color:var(--oxide)">■</span> propellant &nbsp; <span style="color:var(--phos)">■</span> hardware + payload</span>
+    </div>
+  </div>
+  <p class="mono" id="verdict" style="font-size:12.5px;color:var(--ink2);margin:16px 0 0;line-height:1.6"></p>
+</div>
+</div>
+
+<div class="bleed">
+<figure>
+  <span class="lbl">Figure 00.2 — the chain, end to end</span>
+  <svg viewBox="0 0 1040 250" role="img" aria-label="Value chain from raw matter to end markets, with value concentration">
+    <defs><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M0 0 L10 5 L0 10 z" fill="var(--ink3)"/></marker></defs>
+    <g>
+      <text class="sw" x="0" y="14">UPSTREAM · things that are built</text>
+      <text class="sw" x="700" y="14">DOWNSTREAM · things that are sold</text>
+    </g>
+    <g id="chainboxes">
+      <g><rect x="0" y="30" width="152" height="66" fill="var(--panel)" stroke="var(--rule)"/>
+        <text class="st" x="12" y="52">Matter</text><text class="sw" x="12" y="70">propellant, alloys</text>
+        <text class="sw" x="12" y="86">composites, silicon</text></g>
+      <g><rect x="176" y="30" width="152" height="66" fill="var(--panel)" stroke="var(--rule)"/>
+        <text class="st" x="188" y="52">Components</text><text class="sw" x="188" y="70">valves, sensors</text>
+        <text class="sw" x="188" y="86">rad-hard chips, wheels</text></g>
+      <g><rect x="352" y="30" width="152" height="66" fill="var(--panel)" stroke="var(--rule)"/>
+        <text class="st" x="364" y="52">Machines</text><text class="sw" x="364" y="70">engines, buses</text>
+        <text class="sw" x="364" y="86">payload instruments</text></g>
+      <g><rect x="528" y="30" width="152" height="66" fill="var(--panel)" stroke="var(--rule)"/>
+        <text class="st" x="540" y="52">Vehicles</text><text class="sw" x="540" y="70">launchers, sats</text>
+        <text class="sw" x="540" y="86">capsules, stations</text></g>
+      <g><rect x="704" y="30" width="152" height="66" fill="var(--panel)" stroke="var(--rule)"/>
+        <text class="st" x="716" y="52">Access + ops</text><text class="sw" x="716" y="70">launch, ground</text>
+        <text class="sw" x="716" y="86">station keeping</text></g>
+      <g><rect x="880" y="30" width="152" height="66" fill="var(--oxide)" opacity=".14"/>
+        <rect x="880" y="30" width="152" height="66" fill="none" stroke="var(--oxide)"/>
+        <text class="st" x="892" y="52">Services</text><text class="sw" x="892" y="70">bandwidth, PNT</text>
+        <text class="sw" x="892" y="86">imagery, science</text></g>
+    </g>
+    <g stroke="var(--ink3)" stroke-width="1" marker-end="url(#ar)">
+      <line x1="154" y1="63" x2="170" y2="63"/><line x1="330" y1="63" x2="346" y2="63"/>
+      <line x1="506" y1="63" x2="522" y2="63"/><line x1="682" y1="63" x2="698" y2="63"/>
+      <line x1="858" y1="63" x2="874" y2="63"/>
+    </g>
+    <text class="sw" x="0" y="132">SHARE OF GLOBAL SPACE-ECONOMY REVENUE (approx., 2025)</text>
+    <g>
+      <rect x="0" y="142" width="2" height="28" fill="var(--ink3)" opacity=".5"/>
+      <rect x="176" y="142" width="7" height="28" fill="var(--ink3)" opacity=".5"/>
+      <rect x="352" y="142" width="9" height="28" fill="var(--ink3)" opacity=".55"/>
+      <rect x="528" y="142" width="17" height="28" fill="var(--ink3)" opacity=".6"/>
+      <rect x="704" y="142" width="4" height="28" fill="var(--ink3)" opacity=".55"/>
+      <rect x="880" y="142" width="152" height="28" fill="var(--oxide)"/>
+      <text class="sv" x="0" y="188">~1%</text><text class="sv" x="176" y="188">~3%</text>
+      <text class="sv" x="352" y="188">~4%</text><text class="sv" x="528" y="188">~8%</text>
+      <text class="sv" x="704" y="188">~2%</text>
+      <text class="sv" x="880" y="188" fill="var(--oxide)">~70%+</text>
+    </g>
+    <line x1="0" y1="208" x2="1032" y2="208" stroke="var(--rule)"/>
+    <text class="sw" x="0" y="228">LAUNCH — the most visible activity in the industry — is the thin bar at 704.</text>
+    <text class="sw" x="0" y="244">It is an enabling cost, not the product. Ground equipment and consumer services dominate.</text>
+  </svg>
+  <div style="display:flex;flex-wrap:wrap;gap:32px;align-items:center;margin-top:22px;padding-top:20px;border-top:1px solid var(--rule2)">
+    <svg viewBox="0 0 180 180" width="180" height="180" role="img" aria-label="Pie chart of the same revenue shares by chain stage">
+      <g transform="rotate(-90 90 90)">
+        <circle cx="90" cy="90" r="70" fill="none" stroke="var(--ink3)" opacity=".45" stroke-width="30" stroke-dasharray="4.40 435.42" stroke-dashoffset="0.00"/>
+          <circle cx="90" cy="90" r="70" fill="none" stroke="var(--ink3)" opacity=".45" stroke-width="30" stroke-dasharray="13.19 426.63" stroke-dashoffset="-4.40"/>
+          <circle cx="90" cy="90" r="70" fill="none" stroke="var(--ink3)" opacity=".55" stroke-width="30" stroke-dasharray="17.59 422.23" stroke-dashoffset="-17.59"/>
+          <circle cx="90" cy="90" r="70" fill="none" stroke="var(--ink3)" opacity=".65" stroke-width="30" stroke-dasharray="35.19 404.64" stroke-dashoffset="-35.19"/>
+          <circle cx="90" cy="90" r="70" fill="none" stroke="var(--ink3)" opacity=".55" stroke-width="30" stroke-dasharray="8.80 431.03" stroke-dashoffset="-70.37"/>
+          <circle cx="90" cy="90" r="70" fill="none" stroke="var(--oxide)" opacity="1" stroke-width="30" stroke-dasharray="307.88 131.95" stroke-dashoffset="-79.17"/>
+          <circle cx="90" cy="90" r="70" fill="none" stroke="var(--ink3)" opacity=".18" stroke-width="30" stroke-dasharray="52.78 387.04" stroke-dashoffset="-387.04"/>
+      </g>
+      <text x="90" y="86" text-anchor="middle" class="sv" style="font-size:20px">~$600B</text>
+      <text x="90" y="102" text-anchor="middle" class="sw">total, 2025</text>
+    </svg>
+    <svg viewBox="0 0 230 140" width="230" height="140" aria-hidden="true">
+      <g><rect x="0" y="0" width="11" height="11" fill="var(--ink3)" opacity=".45"/><text class="sw" x="17" y="10">Matter — ~1%</text></g>
+          <g><rect x="0" y="20" width="11" height="11" fill="var(--ink3)" opacity=".45"/><text class="sw" x="17" y="30">Components — ~3%</text></g>
+          <g><rect x="0" y="40" width="11" height="11" fill="var(--ink3)" opacity=".55"/><text class="sw" x="17" y="50">Machines — ~4%</text></g>
+          <g><rect x="0" y="60" width="11" height="11" fill="var(--ink3)" opacity=".65"/><text class="sw" x="17" y="70">Vehicles — ~8%</text></g>
+          <g><rect x="0" y="80" width="11" height="11" fill="var(--ink3)" opacity=".55"/><text class="sw" x="17" y="90">Access + ops — ~2%</text></g>
+          <g><rect x="0" y="100" width="11" height="11" fill="var(--oxide)" opacity="1"/><text class="sw" x="17" y="110">Services — ~70%+</text></g>
+          <g><rect x="0" y="120" width="11" height="11" fill="var(--ink3)" opacity=".18"/><text class="sw" x="17" y="130">Other / rounding — ~12%</text></g>
+    </svg>
+  </div>
+  <figcaption><b>Here is the surprise of the whole industry.</b> Rockets are the picture everyone has in their head, but they are not where the money is. The cash is in your satellite TV box, the GPS chip in your phone, and internet beamed down from orbit. Out of a roughly <b>$600 billion</b> global space economy, satellite services and ground equipment take the lion's share, while launching rockets is only around <b>$10–15 billion</b> of that. Chapter 09 traces where the rest of the money actually goes.
+  </figcaption>
+</figure>
+</div>
+
+<div class="col">
+<section id="c01">
+  <div class="chead"><span class="num">01</span><h2>Matter</h2><span class="kick">Tier one · raw inputs</span></div>
+  <p class="dek">Only a handful of materials show up again and again in spacecraft, because physics simply does not give engineers a choice.</p>
+
+  <h3><span class="tick">§</span>Propellant — the biggest single thing you will ever buy</h3>
+  <p>Here is something people do not expect: a rocket is basically a flying fuel tank with an engine bolted to the bottom. So choosing the fuel decides almost everything else — how big the vehicle is, how it is plumbed, what ground equipment it needs, whether it can be reused. The core trade-off is <strong>exhaust speed against density</strong>: hydrogen gives the fastest exhaust of any practical rocket fuel, but it is so light and fluffy that hydrogen stages end up huge, wrapped in thick insulation, and prone to leaking. Density matters most on the bottom stage, where drag and tank weight dominate. Exhaust speed (I<sub>sp</sub>) matters most on the top stage, where the rocket equation's exponent bites hardest.</p>
+
+  <div class="scroll"><table>
+    <tr><th>Propellant pair — oxidiser / fuel</th><th class="n">I<sub>sp</sub> vac (s)</th><th class="n">Bulk ρ (kg/m³)</th><th>Storage</th><th>Why it gets chosen</th></tr>
+    <tr><td>LOX (liquid oxygen) / LH₂</td><td class="n">450–465</td><td class="n">~360</td><td>Cryogenic, both sides</td><td>The most fuel-efficient option there is, but brutally cold to handle, needing huge tanks, and prone to making metal brittle. LOX is the oxidiser here, not the fuel — it's paired with liquid hydrogen, the fuel. Used on upper stages, the Shuttle, and SLS.</td></tr>
+    <tr><td>LOX / CH₄ (methalox)</td><td class="n">375–382</td><td class="n">~830</td><td>Cryogenic, both sides</td><td>Burns clean, leaves no soot, and stores at a temperature close to the oxygen it burns with. Has become the go-to fuel for reusable rockets — Raptor, BE-4.</td></tr>
+    <tr><td>LOX / RP-1 (kerolox)</td><td class="n">330–350</td><td class="n">~1030</td><td>Cryogenic oxidiser, storable fuel</td><td>Dense, cheap, and well understood — essentially refined kerosene. Leaves soot that gums up the pumps if the engine is reused.</td></tr>
+    <tr><td>N₂O₄ / UDMH-MMH</td><td class="n">315–326</td><td class="n">~1180</td><td>Storable for years</td><td>The two liquids burst into flame the instant they touch, so no ignition system is needed, and they can sit in a tank for years. Highly toxic. Used in satellites, landers, escape systems.</td></tr>
+    <tr><td>APCP solid</td><td class="n">265–285</td><td class="n">~1750</td><td>Solid, no tanks needed</td><td>Basically a giant firework: no pumps needed, huge thrust for its size, but once lit it cannot be throttled or switched off. Used in boosters and missiles.</td></tr>
+    <tr><td>Hydrazine monoprop</td><td class="n">220–235</td><td class="n">1004</td><td>Storable for years</td><td>A single chemical that breaks apart violently on contact with a catalyst — the simplest thruster you can build. The workhorse for small steering thrusters.</td></tr>
+    <tr><td>Xenon / krypton (electric)</td><td class="n">1600–4200</td><td class="n">n/a</td><td>Pressurised gas, storable</td><td>Ten times more fuel-efficient than chemical rockets, but with thrust as gentle as the weight of a sheet of paper, so engines burn for months, not minutes.</td></tr>
+  </table></div>
+
+  <h3><span class="tick">§</span>Structure — strong enough, light enough, cheap enough</h3>
+  <div class="cards">
+    <div class="card"><span class="lbl">Tanks &amp; primary structure</span><h5>Aluminium-lithium 2195</h5>
+      <p>A lithium-aluminium alloy: lighter and stiffer than ordinary aircraft aluminium, and easy to weld. The standard choice for fuel tanks for thirty years.</p></div>
+    <div class="card"><span class="lbl">Tanks &amp; fairings</span><h5>Carbon fibre composite</h5>
+      <p>Gives the best strength for its weight of anything available, but the moulds are expensive and hidden damage is hard to detect. Used everywhere for nose cones and pressure tanks, still debated for holding super-cold fuel.</p></div>
+    <div class="card"><span class="lbl">Reusable airframe</span><h5>Stainless steel 304L</h5>
+      <p>Heavier than the fancy alternatives for the same strength, but it stays strong when hot, is cheap, and can be welded outdoors in a tent. A trade nobody expected to work — extra weight for far less cost — and it did.</p></div>
+    <div class="card"><span class="lbl">Hot section</span><h5>Inconel 718 · GRCop</h5>
+      <p>Nickel and copper alloys that let an engine's combustion chamber survive gas hotter than 3,300 °C, cooled by fuel running through channels just millimetres away.</p></div>
+    <div class="card"><span class="lbl">Entry</span><h5>PICA · carbon-carbon · tiles</h5>
+      <p>Materials that either sacrifice themselves, burning away and taking the heat with them, or, like the tiles on a reusable capsule, are simply so bad at conducting heat that it never gets through. Reuse is pushing hard toward the tiles.</p></div>
+    <div class="card"><span class="lbl">Thermal control</span><h5>Kapton MLI · OSR</h5>
+      <p>Shiny, layered blankets and mirrored panels. In a vacuum there is no air to carry heat away — the only way to lose it is to radiate it, like a glowing coal — so how shiny or dull a surface is <em>is</em> the cooling system.</p></div>
+  </div>
+
+  <h4>Scarce and strategic</h4>
+  <ul>
+    <li><strong>Plutonium-238</strong> — the only practical fuel for a radioisotope generator, a heat source that turns its own decay into electricity for spacecraft too far from the Sun for solar panels to work. Production stopped for twenty years and only recently restarted, so it is supply, not engineering, that limits how many outer-planet missions can fly.</li>
+    <li><strong>Helium</strong> — used to pressurise fuel tanks because nothing else stays gaseous at those freezing temperatures. A single launch can burn through a genuinely significant slice of the world's supply.</li>
+    <li><strong>Xenon</strong> — a byproduct of separating industrial gases from air, and there simply is not enough of it to fuel thousands of satellites. Krypton, cheaper and slightly less efficient, is increasingly used instead.</li>
+    <li><strong>Radiation-hardened chips</strong> — built on manufacturing processes a decade or more behind your phone's, in tiny quantities, and priced accordingly high.</li>
+  </ul>
+</section>
+
+<section id="c02">
+  <div class="chead"><span class="num">02</span><h2>Components</h2><span class="kick">Tier two · parts</span></div>
+  <p class="dek">This is where weight, reliability, and cost actually get decided — one part at a time, knowing nobody can ever fix it once it is up there.</p>
+
+  <p>Nobody can walk out and fix a satellite, or even reach over and reboot it by hand. So every single part has to survive three hostile environments at once. First, <strong>launch itself</strong> — a few minutes of bone-rattling noise, shock and vibration. Second, <strong>the vacuum of space</strong> — no air means no convection, so materials slowly boil off their own molecules, metal parts pressed together can literally weld themselves shut, and in low orbit stray oxygen atoms chemically eat away at surfaces. Third, <strong>radiation</strong> — years of steady bombardment that degrades electronics, plus the occasional stray high-energy particle that can flip a single bit of memory or permanently short out a chip. The result is an industry that builds in tiny batches, tests brutally, and locks in the exact parts list years before anything flies.</p>
+
+  <h4>The recurring component families</h4>
+  <div class="cards">
+    <div class="card"><span class="lbl">Power</span><h5>Triple-junction GaAs cells</h5>
+      <p>Cells made of gallium arsenide, layered three ways to catch more of the light spectrum. They turn 30–32% of sunlight into electricity, against 18–22% for the silicon on your roof, and shrug off radiation far better. Glued to panels with hinges that only ever have to work once — when they unfold.</p></div>
+    <div class="card"><span class="lbl">Power</span><h5>Li-ion packs · RTGs (radioisotope generators)</h5>
+      <p>Batteries carry the spacecraft through darkness — in low orbit that means charging and draining about 16 times a day, tens of thousands of cycles over a lifetime. Past Jupiter, sunlight gets too weak to bother with, so a radioisotope thermoelectric generator, or RTG, takes over: a lump of plutonium-238 — chosen because it decays steadily over decades rather than in a sudden burst, giving off heat the whole time, and its radiation is weak alpha particles that a thin metal casing blocks completely. That steady heat is converted straight into electricity — no moving parts to wear out, no sunlight required. It is not power-plant plutonium and cannot be used in a weapon; its only job on a spacecraft is to keep making warmth long after the Sun is too faint to help.</p></div>
+    <div class="card"><span class="lbl">Attitude</span><h5>Reaction wheels · <span class="tip" tabindex="0">CMGs (control moment gyroscopes)<span class="tipbox wide">
+        <svg viewBox="0 0 260 130" width="240" height="120" aria-hidden="true">
+          <defs><marker id="tipArrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto">
+            <path d="M0 0 L10 5 L0 10 z" fill="#E4783F"/></marker></defs>
+          <text x="62" y="14" text-anchor="middle" font-family="ui-monospace,monospace" font-size="9" fill="#9DB0B8">REACTION WHEEL</text>
+          <circle cx="62" cy="62" r="26" fill="none" stroke="#E4783F" stroke-width="2"/>
+          <path d="M42 38 A28 28 0 0 1 82 38" fill="none" stroke="#E4783F" stroke-width="1.5" marker-end="url(#tipArrow)"/>
+          <text x="62" y="106" text-anchor="middle" font-family="Charter,serif" font-size="10" fill="#C9D3D6">spins faster / slower</text>
+          <text x="200" y="14" text-anchor="middle" font-family="ui-monospace,monospace" font-size="9" fill="#9DB0B8">CMG</text>
+          <g transform="translate(200,62) rotate(-24)">
+            <rect x="-30" y="-6" width="60" height="12" fill="none" stroke="#9DB0B8" stroke-width="1.5"/>
+            <circle cx="0" cy="0" r="22" fill="none" stroke="#43B4A6" stroke-width="2"/>
+          </g>
+          <path d="M200 34 L200 18" stroke="#43B4A6" stroke-width="1.5" marker-end="url(#tipArrow)"/>
+          <text x="200" y="106" text-anchor="middle" font-family="Charter,serif" font-size="10" fill="#C9D3D6">constant spin, wheel tilts</text>
+        </svg>
+        <div class="cap">A reaction wheel pushes the spacecraft by changing its own spin rate. A CMG spins at constant speed and tilts the whole wheel on a gimbal instead — much stronger for the same size.</div>
+      </span></span></h5>
+      <p>Spin up a heavy flywheel inside the spacecraft and, just like a skater pulling in their arms, the whole spacecraft gently rotates the other way. A reaction wheel just changes its spin speed to do this; a control moment gyroscope (CMG) keeps spinning at constant speed and instead tilts the whole spinning wheel on a gimbal, which pushes back much harder for the same size and power — the choice for large spacecraft like the ISS that need to slew serious mass. Either way, the spin builds up over time and has to be dumped using magnets or thrusters. If the wheel itself breaks, there is often no backup.</p></div>
+    <div class="card"><span class="lbl">Attitude</span><h5>Star trackers · IMUs (inertial measurement units) · sun sensors</h5>
+      <p>A star tracker is basically a camera that photographs the night sky and matches the pattern of stars against a catalogue, pinning down exactly which way the spacecraft is pointing to within a sliver of a degree. An IMU is the fast, dumb backup: gyroscopes and accelerometers that feel the spacecraft turning and drift, updating many times a second with no need to see anything — accurate for only seconds before it drifts, but never blind. Everything else on board is a rougher, faster backup for when the star tracker's view is not available.</p></div>
+    <div class="card"><span class="lbl">Compute</span><h5>Rad-hard processors · FPGAs</h5>
+      <p>Computers that triple-check their own logic, correct memory errors on the fly, and have a watchdog that reboots them if they freeze. Increasingly paired with cheap ordinary chips for the heavy number-crunching, flown on the assumption those chips will occasionally crash — and just get rebooted.</p></div>
+    <div class="card"><span class="lbl">Fluidics</span><h5>Valves · COPVs (composite overwrapped pressure vessels) · turbopumps</h5>
+      <p>Tanks wrapped in carbon fibre hold gas at over 300 times atmospheric pressure while staying as light as possible. A turbopump, spinning at 30,000 rpm, can shove an entire swimming pool's worth of fuel through in a single minute.</p></div>
+  </div>
+</section>
+
+<section id="c03">
+  <div class="chead"><span class="num">03</span><h2>Machines</h2><span class="kick">Tier three · subsystems that do work</span></div>
+  <p class="dek">Really only two machines matter here: the thing that makes thrust, and the platform that keeps everything else alive.</p>
+
+  <h3><span class="tick">§</span>Engine cycles — where does the pump get its power?</h3>
+  <p>To burn fuel efficiently it has to be squeezed into the chamber at very high pressure, which means pumping it there first. So where does the energy to run that pump come from? That single question defines an engine's "cycle," and it decides how efficient, how complicated, and how expensive the whole engine ends up being.</p>
+</section>
+</div>
+
+<div class="bleed">
+<figure>
+  <span class="lbl">Figure 03.1 — the four cycle families</span>
+  <svg viewBox="0 0 1040 230" role="img" aria-label="Comparison of rocket engine power cycles">
+    <g id="cyc">
+      <g transform="translate(0,0)">
+        <rect x="0" y="20" width="238" height="150" fill="var(--panel)" stroke="var(--rule)"/>
+        <text class="st" x="14" y="44">Pressure-fed</text>
+        <circle cx="46" cy="80" r="14" fill="none" stroke="var(--ink3)"/><text class="sw" x="66" y="84">high-P tank</text>
+        <path d="M46 94 L46 128" stroke="var(--oxide)" stroke-width="2"/>
+        <path d="M36 128 L56 128 L50 152 L42 152 Z" fill="var(--oxide)" opacity=".7"/>
+        <text class="sw" x="14" y="166">no pumps · low chamber pressure</text>
+      </g>
+      <g transform="translate(266,0)">
+        <rect x="0" y="20" width="238" height="150" fill="var(--panel)" stroke="var(--rule)"/>
+        <text class="st" x="14" y="44">Gas generator</text>
+        <circle cx="46" cy="80" r="14" fill="none" stroke="var(--ink3)"/>
+        <path d="M46 94 L46 128" stroke="var(--oxide)" stroke-width="2"/>
+        <path d="M46 100 L110 100 L110 76" stroke="var(--ink3)" stroke-width="1.5" fill="none"/>
+        <path d="M104 76 L116 76 L112 58 L108 58 Z" fill="var(--ink3)" opacity=".5"/>
+        <text class="sw" x="122" y="70">dumped</text>
+        <path d="M36 128 L56 128 L50 152 L42 152 Z" fill="var(--oxide)" opacity=".7"/>
+        <text class="sw" x="14" y="166">1–3% of flow burned, then dumped</text>
+      </g>
+      <g transform="translate(532,0)">
+        <rect x="0" y="20" width="238" height="150" fill="var(--panel)" stroke="var(--rule)"/>
+        <text class="st" x="14" y="44">Staged combustion</text>
+        <circle cx="46" cy="80" r="14" fill="none" stroke="var(--ink3)"/>
+        <path d="M46 94 L46 128" stroke="var(--oxide)" stroke-width="2"/>
+        <path d="M46 100 L110 100 L110 116 L58 116" stroke="var(--phos)" stroke-width="1.5" fill="none"/>
+        <text class="sw" x="118" y="104">preburner gas</text><text class="sw" x="118" y="118">→ chamber</text>
+        <path d="M36 128 L56 128 L50 152 L42 152 Z" fill="var(--oxide)"/>
+        <text class="sw" x="14" y="166">nothing wasted · brutal turbines</text>
+      </g>
+      <g transform="translate(798,0)">
+        <rect x="0" y="20" width="238" height="150" fill="var(--panel)" stroke="var(--oxide)"/>
+        <text class="st" x="14" y="44">Full-flow / electric</text>
+        <circle cx="46" cy="80" r="14" fill="none" stroke="var(--ink3)"/>
+        <path d="M46 94 L46 128" stroke="var(--oxide)" stroke-width="2"/>
+        <path d="M46 98 L100 98 L100 114 L58 114" stroke="var(--phos)" stroke-width="1.5" fill="none"/>
+        <path d="M46 106 L86 106 L86 122 L58 122" stroke="var(--phos)" stroke-width="1.5" fill="none"/>
+        <path d="M36 128 L56 128 L50 152 L42 152 Z" fill="var(--oxide)"/>
+        <text class="sw" x="14" y="166">both gasified · or battery pumps</text>
+      </g>
+    </g>
+    <line x1="0" y1="192" x2="1036" y2="192" stroke="var(--rule)"/>
+    <text class="sw" x="0" y="212">SIMPLE, CHEAP, LOW PERFORMANCE</text>
+    <text class="sw" x="1036" y="212" text-anchor="end">COMPLEX, COSTLY, HIGH PERFORMANCE</text>
+    <line x1="330" y1="207" x2="700" y2="207" stroke="var(--oxide)" stroke-width="1.5" marker-end="url(#ar)"/>
+  </svg>
+  <figcaption><b>Every bit of extra engine efficiency has to be bought with better metal.</b> The simplest design burns a little fuel off to the side just to spin the pump, then throws that exhaust away — wasteful, but simple. A cleverer design instead feeds the leftover exhaust back into the main chamber so nothing is wasted, at the cost of running turbine blades in blisteringly hot, oxygen-rich gas — maybe the hardest materials problem in all of rocketry. Small engines sometimes skip fuel-driven pumps altogether and just use batteries and electric motors — simple, but it only pays off at small scale.</figcaption>
+</figure>
+</div>
+
+<div class="col">
+  <h3 id="atlas-intro"><span class="tick">§</span>The engine atlas — every kind of rocket engine, taken apart</h3>
+  <p>Now take them apart one at a time — not just the liquid cycles, but solid motors and hybrids, the small thrusters that steer spacecraft, the nozzles that shape the exhaust, electric and nuclear propulsion, and the engines that breathe air, ride sunlight or dream of fusion. Pick a family and an engine, press Next, and follow the propellant from tank to exhaust. Then run it yourself in the physics lab and watch what the real equations do. Where real hardware exists, load it and see how close first principles get.</p>
+</div>
+
+<div class="bleed">
+  <div id="atlas"><noscript><p>The engine atlas is interactive and needs JavaScript to run.</p></noscript></div>
+</div>
+
+<div class="col">
+  <h3><span class="tick">§</span>The bus — a life-support system for an instrument</h3>
+  <p>Split any satellite in two and you get the <strong>payload</strong> — the actual reason it exists, whether that is a camera, a radio transponder, or a telescope — and the <strong>bus</strong>, everything else: the life-support system that keeps the payload powered, pointed the right way, cool enough, in touch with the ground, and in the right orbit. Strip away the payload, and the bus is roughly the same six systems whether the satellite weighs four kilograms or six tonnes. That is exactly why manufacturers can mass-produce them like any other product.</p>
+</div>
+
+<div class="bleed">
+<figure>
+  <span class="lbl">Figure 03.2 — anatomy of a spacecraft bus</span>
+  <svg viewBox="0 0 1040 330" role="img" aria-label="Exploded diagram of satellite bus subsystems">
+    <rect x="390" y="90" width="180" height="150" fill="var(--panel)" stroke="var(--ink)" stroke-width="1.5"/>
+    <text class="st" x="480" y="120" text-anchor="middle">BUS</text>
+    <rect x="414" y="134" width="132" height="52" fill="var(--oxide)" opacity=".18"/>
+    <rect x="414" y="134" width="132" height="52" fill="none" stroke="var(--oxide)"/>
+    <text class="st" x="480" y="158" text-anchor="middle" fill="var(--oxide)">PAYLOAD</text>
+    <text class="sw" x="480" y="176" text-anchor="middle">the mission</text>
+    <text class="sw" x="480" y="212" text-anchor="middle">structure survives launch,</text>
+    <text class="sw" x="480" y="228" text-anchor="middle">then does nothing again</text>
+
+    <g stroke="var(--rule)" stroke-width="1">
+      <path d="M390 115 L300 115" fill="none"/><path d="M390 165 L300 165" fill="none"/>
+      <path d="M390 215 L300 215" fill="none"/><path d="M570 115 L660 115" fill="none"/>
+      <path d="M570 165 L660 165" fill="none"/><path d="M570 215 L660 215" fill="none"/>
+    </g>
+    <g>
+      <text class="st" x="292" y="106" text-anchor="end">EPS · electrical power</text>
+      <text class="sw" x="292" y="122" text-anchor="end">arrays → regulator → battery → bus</text>
+      <text class="st" x="292" y="156" text-anchor="end">ADCS · attitude &amp; orbit control</text>
+      <text class="sw" x="292" y="172" text-anchor="end">star tracker, wheels, magnetorquers</text>
+      <text class="st" x="292" y="206" text-anchor="end">TCS · thermal control</text>
+      <text class="sw" x="292" y="222" text-anchor="end">radiators, MLI, heaters, heat pipes</text>
+      <text class="st" x="668" y="106">TT&amp;C · telemetry, tracking, command</text>
+      <text class="sw" x="668" y="122">the only link to a human being</text>
+      <text class="st" x="668" y="156">C&amp;DH · onboard computer</text>
+      <text class="sw" x="668" y="172">sequencing, fault protection, safe mode</text>
+      <text class="st" x="668" y="206">PROP · propulsion</text>
+      <text class="sw" x="668" y="222">station keeping, momentum dump, deorbit</text>
+    </g>
+    <line x1="0" y1="266" x2="1036" y2="266" stroke="var(--rule)"/>
+    <text class="sw" x="0" y="288">TYPICAL DRY-MASS SPLIT OF A COMMUNICATIONS SATELLITE</text>
+    <g>
+      <rect x="0" y="298" width="300" height="18" fill="var(--oxide)"/><text class="sv" x="8" y="312" fill="var(--paper)">PAYLOAD 30%</text>
+      <rect x="304" y="298" width="220" height="18" fill="var(--ink3)" opacity=".6"/><text class="sv" x="312" y="312">STRUCTURE 22%</text>
+      <rect x="528" y="298" width="200" height="18" fill="var(--ink3)" opacity=".45"/><text class="sv" x="536" y="312">POWER 20%</text>
+      <rect x="732" y="298" width="130" height="18" fill="var(--ink3)" opacity=".35"/><text class="sv" x="740" y="312">ADCS 13%</text>
+      <rect x="866" y="298" width="170" height="18" fill="var(--ink3)" opacity=".25"/><text class="sv" x="874" y="312">THERMAL+ 17%</text>
+    </g>
+  </svg>
+  <figcaption><b>Only about a third of a communications satellite is actually the satellite.</b> The rest is overhead — the price of operating alone and unattended in a vacuum. Shrinking that overhead, through standardised parts, cheaper electronics, and assembly-line production, is what turned satellites from one-off, handmade objects into a manufactured product, and it is the only reason building a constellation of a thousand satellites is even affordable.</figcaption>
+</figure>
+</div>
+
+<div class="col">
+<section id="c04">
+  <div class="chead"><span class="num">04</span><h2>Vehicles &amp; platforms</h2><span class="kick">Tier four · integrated systems</span></div>
+  <p class="dek">Once all these parts are assembled, the finished machines sort into a handful of families — each a different answer to the same three questions: how much weight, how far, and how often.</p>
+
+  <h3><span class="tick">§</span>Launch vehicles by class</h3>
+  <div class="scroll"><table>
+    <tr><th>Class</th><th class="n">LEO payload</th><th>Representative</th><th class="n">$/kg, order of</th><th>Economic logic</th></tr>
+    <tr><td>Small / micro</td><td class="n">&lt; 1 t</td><td>Electron, Alpha</td><td class="n">$20–30k</td><td>You are not paying for a cheap ride — you are paying to launch exactly when you want, into exactly the orbit you want, with nobody else on board.</td></tr>
+    <tr><td>Medium</td><td class="n">1–20 t</td><td>Soyuz-2, Vega-C</td><td class="n">$5–10k</td><td>The traditional workhorse size, now squeezed by cheaper, reusable heavy rockets from above.</td></tr>
+    <tr><td>Heavy, reusable</td><td class="n">15–23 t</td><td>Falcon 9</td><td class="n">$2–3k</td><td>Flying the same expensive booster over and over spreads its cost across many missions instead of throwing it away after one.</td></tr>
+    <tr><td>Heavy, expendable</td><td class="n">10–20 t</td><td>Ariane 6, Vulcan, H3</td><td class="n">$8–12k</td><td>Built for national independence and missions needing an especially powerful upper stage; competes on reliability, not price.</td></tr>
+    <tr><td>Super heavy</td><td class="n">50–100+ t</td><td>SLS, Starship, Long March 9</td><td class="n">$100–$25k</td><td>Either a government programme priced mission by mission, or a bet that fully reusing every part of the rocket could cut cost tenfold.</td></tr>
+    <tr><td>Rideshare</td><td class="n">per-slot</td><td>Transporter-class</td><td class="n">$5–6k</td><td>Sells the leftover lifting capacity on someone else's rocket. The cheapest kilogram there is — as long as you are happy going wherever that rocket happens to be headed.</td></tr>
+  </table></div>
+  <p><span class="pill hot">Note</span> These are sticker prices for a whole rocket, not the true extra cost of one more flight, and the numbers for still-untested super-heavy rockets are goals, not proven results. Use this table to rank the options against each other, not as an accounting ledger.</p>
+
+  <h3><span class="tick">§</span>Spacecraft by class</h3>
+  <div class="cards">
+    <div class="card"><span class="lbl">0.1–10 kg</span><h5>CubeSat · 1U–12U</h5>
+      <p>A standardised 10-centimetre cube. This one idea made it possible to hitch a ride on someone else's rocket and build satellites out of ordinary off-the-shelf electronics. It turned university labs into real satellite operators.</p></div>
+    <div class="card"><span class="lbl">10–500 kg</span><h5>Smallsat · constellation node</h5>
+      <p>Built on an assembly line and launched by the hundreds, treated as disposable rather than precious. Backup lives in the swarm, not in any single satellite — a complete reversal of how spacecraft used to be built.</p></div>
+    <div class="card"><span class="lbl">2,000–6,500 kg</span><h5>GEO communications satellite</h5>
+      <p>Built to last 15 years, climbing to its final orbit slowly on electric thrusters, carrying hundreds of radio channels. This was the original space business, and it is now fighting off competition from low-orbit internet constellations.</p></div>
+    <div class="card"><span class="lbl">Varies</span><h5>Deep-space probe</h5>
+      <p>Has to think for itself, because it is so far away that light itself takes hours to arrive — real-time joystick control from Earth is simply impossible. Runs on a plutonium heat source or enormous solar panels, and can spend a decade just cruising to its destination.</p></div>
+    <div class="card"><span class="lbl">Crewed</span><h5>Capsule · lander · rover</h5>
+      <p>Adds air, water, an emergency escape system, and a reliability bar set roughly a hundred times higher than cargo — which is why it costs roughly a hundred times more per kilogram.</p></div>
+    <div class="card"><span class="lbl">400+ t</span><h5>Space station</h5>
+      <p>A permanently crewed laboratory, built piece by piece in orbit and kept stocked by a steady stream of resupply ships. The ISS is the biggest thing humans have ever assembled outside Earth — a standing lab for studying life without gravity.</p></div>
+  </div>
+</section>
+
+<section id="c05">
+  <div class="chead"><span class="num">05</span><h2>Access &amp; orbits</h2><span class="kick">Tier five · the transaction</span></div>
+  <p class="dek">Launching a rocket is not the goal — choosing an orbit is. And that single choice decides what business the satellite can even be in.</p>
+
+  <p>How high you fly locks in four things at once, and there is no picking just one: <strong>latency</strong> (how long a signal takes to get there and back), <strong>coverage</strong> (how much of Earth one satellite can see), <strong>revisit</strong> (how often it swings back over the same spot), and <strong>lifetime</strong> (how fast leftover atmosphere will drag it down and burn it up). Park a satellite at the special altitude where it orbits once every 24 hours, so it just hangs motionless over one spot on Earth, and it covers a third of the planet — but a round trip signal takes a quarter of a second, because the satellite is 35,786 km away. Fly low instead and the signal barely takes any time to arrive, but that same satellite drops over the horizon after just ten minutes, so hundreds or thousands of them are needed to keep continuous coverage.</p>
+</section>
+</div>
+
+<div class="bleed">
+<figure>
+  <span class="lbl">Figure 05.1 — the orbital regimes</span>
+  <svg viewBox="0 0 1040 380" role="img" aria-label="Orbital regimes by altitude with characteristics">
+    <line x1="150" y1="40" x2="150" y2="330" stroke="var(--ink3)"/>
+    <text class="sw" x="150" y="24" text-anchor="middle">SURFACE</text>
+    <g stroke="var(--rule2)"><line x1="330" y1="40" x2="330" y2="330"/><line x1="510" y1="40" x2="510" y2="330"/>
+      <line x1="690" y1="40" x2="690" y2="330"/><line x1="870" y1="40" x2="870" y2="330"/></g>
+    <text class="sw" x="330" y="352" text-anchor="middle">10²</text><text class="sw" x="510" y="352" text-anchor="middle">10³</text>
+    <text class="sw" x="690" y="352" text-anchor="middle">10⁴</text><text class="sw" x="870" y="352" text-anchor="middle">10⁵ km</text>
+    <text class="sw" x="600" y="372" text-anchor="middle">ALTITUDE, LOG SCALE</text>
+
+    <g><rect x="330" y="46" width="234" height="20" fill="var(--oxide)"/>
+      <text class="st" x="0" y="60">LEO</text><text class="sw" x="0" y="76">160–2,000 km · 90 min</text>
+      <text class="sv" x="576" y="60">imaging, broadband, ISS</text></g>
+    <g><rect x="400" y="94" width="60" height="20" fill="var(--oxide)" opacity=".6"/>
+      <text class="st" x="0" y="108">SSO</text><text class="sw" x="0" y="124">600–800 km · i ≈ 98°</text>
+      <text class="sv" x="472" y="108">same local sun time every pass</text></g>
+    <g><rect x="564" y="142" width="196" height="20" fill="var(--phos)" opacity=".7"/>
+      <text class="st" x="0" y="156">MEO</text><text class="sw" x="0" y="172">2,000–35,000 km</text>
+      <text class="sv" x="772" y="156">GNSS at 20,200 km · 12 h</text></g>
+    <g><rect x="742" y="190" width="22" height="20" fill="var(--phos)"/>
+      <text class="st" x="0" y="204">GEO</text><text class="sw" x="0" y="220">35,786 km · 23 h 56 m</text>
+      <text class="sv" x="776" y="204">fixed in the sky · broadcast</text></g>
+    <g><rect x="470" y="238" width="290" height="20" fill="var(--gold)" opacity=".55"/>
+      <text class="st" x="0" y="252">HEO / Molniya</text><text class="sw" x="0" y="268">e ≈ 0.74 · 12 h</text>
+      <text class="sv" x="772" y="252">loiters where GEO cannot see</text></g>
+    <g><rect x="880" y="286" width="60" height="20" fill="var(--ink3)" opacity=".5"/>
+      <text class="st" x="0" y="300">Lagrange L1 / L2</text><text class="sw" x="0" y="316">1.5 million km</text>
+      <text class="sv" x="868" y="300" text-anchor="end">thermally quiet · space telescopes</text></g>
+
+    <g><rect x="576" y="46" width="120" height="284" fill="var(--oxide)" opacity=".07"/>
+      <text class="sw" x="636" y="40" text-anchor="middle" fill="var(--oxide)">VAN ALLEN BELTS</text></g>
+
+    <g id="orbmarker">
+      <line x1="330" y1="34" x2="330" y2="336" stroke="var(--paper)" stroke-width="2"/>
+      <line x1="330" y1="34" x2="330" y2="336" stroke="var(--oxide)" stroke-width="1.5" stroke-dasharray="3 3"/>
+      <path d="M330 34 L336 24 L324 24 Z" fill="var(--oxide)"/>
+      <text id="orbmarkerlbl" class="sv" x="330" y="18" text-anchor="middle" fill="var(--oxide)">160 km</text>
+    </g>
+  </svg>
+  <div class="orbtool">
+    <span class="lbl">Interactive · drag an altitude, watch the orbit</span>
+    <input id="orbalt" type="range" min="0" max="1000" value="143" style="width:100%;accent-color:var(--oxide);margin-top:10px">
+    <div class="orbreadout">
+      <div><span class="lbl">Altitude</span><div class="mono" id="orbaltv">160 km</div></div>
+      <div><span class="lbl">Orbital period</span><div class="mono" id="orbperiod">88 min</div></div>
+      <div><span class="lbl">Orbital speed</span><div class="mono" id="orbvel">7.81 km/s</div></div>
+      <div><span class="lbl">Regime</span><div class="mono" id="orbregime" style="color:var(--oxide)">Low Earth orbit</div></div>
+    </div>
+  </div>
+  <figcaption><b>There is an invisible danger zone hiding in this chart.</b> Between roughly 1,000 and 60,000 km, Earth's magnetic field traps swarms of high-energy protons and electrons — the Van Allen radiation belts. Living there means expensive shielding, so almost all useful orbits either sit below the inner belt or hop out past it entirely. A fast rocket punches straight through in minutes and barely notices; a satellite crawling up slowly on electric thrusters has no choice but to sit and soak up the dose.</figcaption>
+</figure>
+</div>
+
+<div class="col">
+  <h4>Moving between orbits</h4>
+  <ul>
+    <li><strong>Hohmann transfer</strong> — two short burns trace a stretched oval path connecting one circular orbit to another. The cheapest possible way from A to B in space, and the reason launch windows exist: you have to wait for the planets to line up right.</li>
+    <li><strong>Plane change</strong> — tilting your orbital plane is shockingly expensive (swinging it just 30° in low orbit costs about as much fuel as heading to the Moon), which is why where and which direction you launch from are strategic decisions, not mere logistics.</li>
+    <li><strong>Gravity assist</strong> — swing close past a planet and steal a sliver of its own momentum as it orbits the Sun. Free extra speed, paid for not in fuel but in years of extra flight time and rigid, unmovable launch dates.</li>
+    <li><strong>Aerobraking / aerocapture</strong> — let a planet's own atmosphere do your braking instead of burning fuel. Arriving at Mars this way saves several km/s of speed for free; the price is a heat shield and a few nail-biting minutes where nothing can be done but wait.</li>
+    <li><strong>Electric orbit raising</strong> — a gentle push, about one ten-thousandth of Earth's gravity, sustained for months. It can cut a satellite's launch weight in half, at the cost of delaying its first paycheck by roughly a third of a year.</li>
+  </ul>
+</div>
+
+<div class="col">
+<section id="c06">
+  <div class="chead"><span class="num">06</span><h2>Operations</h2><span class="kick">Tier six · midstream</span></div>
+  <p class="dek">Half of this whole industry never leaves the ground — and it is the half that never gets a day off.</p>
+
+  <p>The <strong>ground segment</strong> — antennas, radios, mission control rooms, scheduling software, orbit tracking — is a bigger business than launch itself, and about as big as building the satellites. Think of a constellation as a distributed computer network, except its nodes happen to be flying at 7.8 km/s. Which means the hard problems are exactly the ones you would expect from that description: scheduling who talks to whom and when, routing data around, pushing out software updates, and always knowing exactly where every node is.</p>
+
+  <div class="cards">
+    <div class="card"><span class="lbl">Function</span><h5>Tracking &amp; orbit determination</h5>
+      <p>Measuring distance, the Doppler shift of a radio signal, and radar returns pin down exactly where a satellite is right now; software then predicts where it will be next. Every collision warning and every antenna's pointing angle depends on getting this right.</p></div>
+    <div class="card"><span class="lbl">Function</span><h5>TT&amp;C and mission control</h5>
+      <p>Health data streams down, commands stream up. This is where operators catch problems, coax a satellite out of an emergency safe mode, and increasingly push software updates that add whole new capabilities after launch.</p></div>
+    <div class="card"><span class="lbl">Function</span><h5>Deep Space Network</h5>
+      <p>Three giant antenna complexes, dishes 34 to 70 metres across, spaced a third of the way around the globe from each other, so as Earth spins there is always one facing any given spacecraft. A single shared resource that everyone always wants more time on than there is.</p></div>
+    <div class="card"><span class="lbl">Function</span><h5>Station keeping</h5>
+      <p>Satellites parked in that 24-hour orbit constantly nudge themselves to stay inside a tiny box in the sky, fighting the gentle push of sunlight and the tug of the Moon and Sun. Low-orbit satellites instead fight atmospheric drag. Either way, whatever fuel is left on board <em>is</em> how much life the satellite has left.</p></div>
+    <div class="card"><span class="lbl">Function</span><h5>End of life</h5>
+      <p>By law, a dead satellite must come down and burn up within 25 years, soon to be tightened to 5, or, if it is in that far-out 24-hour orbit, get boosted 300 km further to a graveyard orbit where it will not bother anyone. A satellite's very last manoeuvre is no longer optional — it is a legal requirement.</p></div>
+    <div class="card"><span class="lbl">Emerging</span><h5>Servicing &amp; refuelling</h5>
+      <p>A new kind of mission: sending a robot to dock with a satellite that was never designed to be docked with, to refuel it, repair it, or nudge it somewhere new. Turns a satellite from a disposable object into something that can actually be maintained.</p></div>
+  </div>
+</section>
+</div>
+
+<div class="col">
+<section id="c07">
+  <div class="chead"><span class="num">07</span><h2>Signal &amp; data</h2><span class="kick">Tier seven · the actual product</span></div>
+  <p class="dek">Almost every satellite, no matter what it is for, is really just selling data. The physics of getting that data safely down to the ground is the second great equation on this page.</p>
+
+  <div class="law">
+    <span class="lbl">Free-space path loss</span>
+    <div class="eq">FSPL(dB) = 20 log₁₀(d<sub>km</sub>) + 20 log₁₀(f<sub>GHz</sub>) + 92.45</div>
+    <dl class="legend">
+      <div><dt>FSPL</dt><dd>free-space path loss, dB</dd></div>
+      <div><dt>d<sub>km</sub></dt><dd>link distance, km</dd></div>
+      <div><dt>f<sub>GHz</sub></dt><dd>carrier frequency, GHz</dd></div>
+      <div><dt>92.45</dt><dd>constant fixing units to km and GHz</dd></div>
+    </dl>
+    <p>A radio signal loses power with the square of the distance it travels, <em>and</em> the square of its frequency. From that 24-hour orbit, broadcasting at 12 GHz, the loss adds up to about <span class="q">205 dB</span> — the signal that lands on your dish is roughly one hundred billion billion times weaker than what was sent.</p>
+  </div>
+
+  <p>Basically every trick in satellite communications is an attempt to claw back some of that lost signal: bigger dishes that focus more of it, more powerful transmitters, quieter receiver electronics, clever error-correcting codes that squeeze the last usable bit out of a noisy signal, and — most powerfully — <strong>flying closer</strong>. Drop from that 24-hour orbit down to 550 km and about <span class="q">36 dB</span> of loss disappears — the signal arrives four thousand times stronger. That one fact, plus cheap mass-produced satellites and cheap rockets, is the entire reason low-orbit internet constellations exist.</p>
+
+  <p>The other big lever is <strong>reusing the same radio frequencies over and over</strong>. A single wide beam covering a continent has to share its limited bandwidth among everyone underneath it. Split that into hundreds of narrow beams, each covering its own small patch of ground, and the same frequencies can be reused in every patch that is not right next to another one using them, multiplying total capacity without needing any new spectrum. It is the same trick that turned old car phones into modern cell networks.</p>
+
+  <div class="scroll"><table>
+    <tr><th>Band</th><th class="n">Frequency</th><th>Character</th><th>Used for</th></tr>
+    <tr><td>L / S</td><td class="n">1–4 GHz</td><td>Rain-immune, low bandwidth</td><td>GNSS, mobile satphone, TT&amp;C, IoT</td></tr>
+    <tr><td>C</td><td class="n">4–8 GHz</td><td>Very robust in weather</td><td>Tropical broadcast, legacy trunking</td></tr>
+    <tr><td>X</td><td class="n">8–12 GHz</td><td>Protected allocation</td><td>Military, EO downlink, deep space</td></tr>
+    <tr><td>Ku</td><td class="n">12–18 GHz</td><td>Good balance, small dishes</td><td>Direct-to-home TV, LEO broadband user links</td></tr>
+    <tr><td>Ka</td><td class="n">26–40 GHz</td><td>High capacity, rain fade</td><td>HTS broadband, gateway feeder links</td></tr>
+    <tr><td>V / Q</td><td class="n">40–75 GHz</td><td>Huge bandwidth, severe fade</td><td>Next-generation feeder links</td></tr>
+    <tr><td>Optical</td><td class="n">~200 THz</td><td>No licence, no interference</td><td>Inter-satellite laser mesh backbones</td></tr>
+  </table></div>
+</section>
+
+<section id="c08">
+  <div class="chead"><span class="num">08</span><h2>Applications</h2><span class="kick">Tier eight · downstream</span></div>
+  <p class="dek">There are four things you can really only do from orbit: broadcast to everyone at once, keep perfect universal time, watch the whole planet, and do physics nowhere else allows.</p>
+
+  <h3><span class="tick">§</span>Connect — one transmitter, a continent of receivers</h3>
+  <p>Being high up buys a clear line of sight to millions of receivers at once. That is why satellites are unbeatable for <strong>broadcast</strong> (identical content to everyone simultaneously), for covering places where it is simply not worth building cell towers (oceans, deserts, polar regions, aeroplanes), and now, via low-orbit constellations, for genuinely fast internet. The newest trick is <strong>direct-to-device</strong>: a satellite convincingly pretending to be a nearby cell tower, so an ordinary unmodified phone can connect straight to it.</p>
+
+  <h3><span class="tick">§</span>Locate — position as a side effect of telling time</h3>
+  <p>A navigation satellite really only does one thing: it broadcasts the exact time, with extreme precision, along with exactly where it is. Your phone listens to four of these broadcasts at once and solves four equations for four unknowns — position in three dimensions, plus how far off its own cheap clock is. That trick is what lets a one-dollar chip give you the accuracy of an atomic clock it does not even contain. Several systems now do this — America's GPS, Russia's GLONASS, Europe's Galileo, China's BeiDou, and regional systems in India and Japan. But here is the twist: the side effect turned out to matter more than the main feature. Free, precise, universal <em>time</em> from these satellites now underpins how banks settle transactions, how power grids stay synchronised, and how phone networks run — and losing that signal is treated as a genuine national emergency.</p>
+
+  <h3><span class="tick">§</span>Observe — the only vantage point that sees everything, again and again</h3>
+  <div class="cards">
+    <div class="card"><span class="lbl">Sensor</span><h5>Optical / multispectral</h5>
+      <p>Ordinary photographs from space, as sharp as under a metre per pixel, or coarser colour images split into a few bands. Cheap and easy to understand, but useless through clouds or at night.</p></div>
+    <div class="card"><span class="lbl">Sensor</span><h5>Synthetic aperture radar</h5>
+      <p>Synthetic aperture radar: the satellite brings its own light source, so it sees straight through clouds and darkness, faking a giant antenna by combining signals as it moves along its path. Combine two passes cleverly and ground shifting by mere millimetres shows up.</p></div>
+    <div class="card"><span class="lbl">Sensor</span><h5>Hyperspectral</h5>
+      <p>Instead of one colour per pixel, hundreds of narrow slices of the light spectrum — a full rainbow fingerprint for every point on the ground. That fingerprint identifies actual materials: a crop under stress, a mineral deposit, even a leaking plume of methane.</p></div>
+    <div class="card"><span class="lbl">Sensor</span><h5>Thermal infrared</h5>
+      <p>Reads the temperature of the ground itself — spotting wildfires, mapping how much hotter cities run than the countryside around them, tracking irrigation, and imaging at night when visible light cannot.</p></div>
+    <div class="card"><span class="lbl">Sensor</span><h5>Radar altimetry / gravimetry</h5>
+      <p>Bounces radar straight down to measure sea level to within centimetres, or measures Earth's gravity field itself, subtle enough to detect an ice sheet losing mass or an aquifer slowly draining away underground.</p></div>
+    <div class="card"><span class="lbl">Sensor</span><h5>GNSS radio occultation</h5>
+      <p>Watches how a navigation satellite's signal bends as it grazes through the atmosphere on its way to another satellite, and uses that bending to map temperature and humidity layer by layer. Cheap, precise, and now a major ingredient in weather forecasts.</p></div>
+  </div>
+
+  <h3><span class="tick">§</span>Discover — when the environment itself is the instrument</h3>
+  <p>Above the atmosphere there is no air to blur the view, no ozone or water vapour swallowing whole slices of light, no clouds, and no day-night cycle to work around. Space telescopes take advantage of that to see wavelengths — infrared, ultraviolet, X-ray, gamma-ray — that are physically blocked from ever reaching the ground. Probes fly right up to other planets because photographing them from a distance can only tell you so much. And weightlessness itself is a laboratory condition unavailable anywhere on Earth: growing purer protein crystals, pulling fibre-optic cable without the distortions gravity-driven currents cause, growing tissue cultures that do not just sink to the bottom of their dish — plus the long-term data on how human bodies hold up, which any future trip beyond the Moon depends on.</p>
+
+  <h4>Spinoff — technology that leaked back down</h4>
+  <p>Solving problems this hard tends to spit out useful technology as a side effect. The camera sensor in your phone traces straight back to a spacecraft imaging chip. So does memory foam, cordless power tools, portable water filters, scratch-resistant glasses, freeze-dried food, certain LED medical treatments, insulin pumps, and fireproof fabric. But honestly, the biggest spinoff is not a gadget at all — it is a way of thinking: the whole discipline of engineering a system so carefully, and testing it so thoroughly, that it simply cannot be allowed to fail.</p>
+</section>
+
+<section id="c09">
+  <div class="chead"><span class="num">09</span><h2>Value capture</h2><span class="kick">Tier nine · where the money is</span></div>
+  <p class="dek">Follow the actual money, and this whole chain flips upside down.</p>
+
+  <p>Out of a global space economy worth roughly <strong>$600 billion</strong>, about three quarters is ordinary commercial business, not government spending, and the overwhelming majority of that commercial money sits <em>downstream</em>: satellite services and the equipment used to receive them. Launching rockets — the part everyone photographs, the part that gets the headlines — is only a few percent of the total. The right way to think about launch is as an <strong>entry fee that gates everything built on top of it</strong>. A tenfold drop in launch cost does not matter because launch itself is a huge business — it matters because it changes what becomes possible to build in every market stacked on top of it.</p>
+</section>
+</div>
+
+<div class="bleed">
+<figure>
+  <span class="lbl">Figure 09.1 — cost to low Earth orbit, 1965–2025</span>
+  <svg viewBox="0 0 1040 400" role="img" aria-label="Log-scale chart of launch cost per kilogram to LEO over time">
+    <g stroke="var(--rule2)" stroke-width="1">
+      <line x1="90" y1="40" x2="1010" y2="40"/><line x1="90" y1="110" x2="1010" y2="110"/>
+      <line x1="90" y1="180" x2="1010" y2="180"/><line x1="90" y1="250" x2="1010" y2="250"/>
+      <line x1="90" y1="320" x2="1010" y2="320"/>
+    </g>
+    <g class="sw" text-anchor="end">
+      <text x="80" y="44">$100k</text><text x="80" y="114">$10k</text>
+      <text x="80" y="184">$1k</text><text x="80" y="254">$100</text><text x="80" y="324">$10</text>
+    </g>
+    <line x1="90" y1="340" x2="1010" y2="340" stroke="var(--ink3)"/>
+    <g class="sw" text-anchor="middle">
+      <text x="120" y="360">1965</text><text x="300" y="360">1980</text><text x="480" y="360">1995</text>
+      <text x="660" y="360">2010</text><text x="840" y="360">2020</text><text x="990" y="360">2025+</text>
+    </g>
+    <text class="sw" x="90" y="382">INFLATION-ADJUSTED LIST PRICE PER KILOGRAM · LOG SCALE · ORDER-OF-MAGNITUDE FIGURES</text>
+
+    <path d="M140 130 L300 60 L470 68 L640 100 L780 145 L900 160" fill="none" stroke="var(--rule)" stroke-width="1" stroke-dasharray="4 4"/>
+    <g fill="var(--ink3)">
+      <circle cx="140" cy="130" r="4"/><circle cx="300" cy="60" r="4"/><circle cx="470" cy="68" r="4"/>
+      <circle cx="640" cy="100" r="4"/>
+    </g>
+    <g fill="var(--oxide)">
+      <circle cx="780" cy="145" r="5"/><circle cx="880" cy="158" r="5"/>
+      <circle cx="990" cy="248" r="6" fill="none" stroke="var(--oxide)" stroke-width="2"/>
+    </g>
+    <g class="sv">
+      <text x="150" y="126">Saturn V · ~$5k</text>
+      <text x="250" y="50">Shuttle · ~$55k</text>
+      <text x="430" y="58">Ariane 5 · ~$9k</text>
+      <text x="600" y="92">Proton · ~$4k</text>
+      <text x="700" y="140" fill="var(--oxide)">Falcon 9 · ~$2.7k</text>
+      <text x="762" y="182" fill="var(--oxide)">Falcon Heavy · ~$1.5k</text>
+      <text x="860" y="238" fill="var(--oxide)" text-anchor="end">Starship, claimed target</text>
+    </g>
+    <line x1="866" y1="243" x2="978" y2="247" stroke="var(--oxide)" stroke-dasharray="3 3"/>
+    <rect x="740" y="30" width="270" height="310" fill="var(--oxide)" opacity=".05"/>
+    <text class="sw" x="748" y="48" fill="var(--oxide)">REUSE ERA</text>
+  </svg>
+  <figcaption><b>Thirty years of basically no progress, then suddenly one decade of real progress.</b> The cost to launch a kilogram barely budged between the Apollo era and 2010 — and the Space Shuttle, which was supposed to make launch cheaper, actually made it more expensive. What finally broke that plateau was catching rocket boosters and flying them again. The open circle is a <b>goal</b>, not a proven result, and depends on reusing every part of a rocket at a flight rate nobody has actually pulled off yet; treat the gap between the last solid dot and it as the sector's central open question.</figcaption>
+</figure>
+</div>
+
+<div class="col">
+  <h4>The three business models that survive</h4>
+  <ul>
+    <li><strong>Cost-plus programmes.</strong> A government pays for something no private company would build on its own — visiting other planets, national security, sending humans beyond Earth. Few units, extremely high standards, funding that survives for decades because it stays politically popular.</li>
+    <li><strong>Infrastructure with subscribers.</strong> Spend a fortune building a satellite network, then sell subscriptions to use it. Needs huge upfront capital, gets more valuable as more users join, and historically has a habit of bankrupting whoever builds it first, right before someone else buys the leftover satellites cheap and makes it profitable.</li>
+    <li><strong>Data products.</strong> Do not sell raw images or bandwidth — sell the answer: crop yield forecasts, ship tracking, methane leak alerts, insurance risk pricing. The highest profit margins, the least money needed up front, and the hardest part is just finding customers who will pay for it.</li>
+  </ul>
+</div>
+
+<div class="col">
+<section id="c10">
+  <div class="chead"><span class="num">10</span><h2>Constraints</h2><span class="kick">Tier ten · the limits</span></div>
+  <p class="dek">These days it is not the engineering holding this industry back — it is a handful of real-world scarcities and one plain physical danger.</p>
+
+  <div class="cards">
+    <div class="card"><span class="lbl">Physical · escalating</span><h5>Orbital debris</h5>
+      <p>About 40,000 objects bigger than a fist are currently tracked in orbit, plus well over a million smaller pieces nobody is watching. At orbital speed, 10 km/s, even a fragment the size of a grape carries the punch of a hand grenade. The nightmare scenario, called <strong>Kessler syndrome</strong>, is a chain reaction: one collision makes debris, that debris causes more collisions, and a whole slice of orbit could become unusable for generations.</p></div>
+    <div class="card"><span class="lbl">Legal · finite</span><h5>Spectrum &amp; slots</h5>
+      <p>Radio frequencies and parking spots in that 24-hour orbit are handed out internationally on a first-come, first-served, use-it-or-lose-it basis. Simply filing a claim for one is a real, valuable, tradeable asset, and the queue to file has itself become a competitive battlefield.</p></div>
+    <div class="card"><span class="lbl">Environmental</span><h5>Radiation &amp; vacuum</h5>
+      <p>Years of steady radiation slowly wear down solar panels and electronics; the odd high-energy particle can flip a bit of memory; a single bad solar storm can end a mission in a day. Because there is no air in space, there is no convection either, so keeping a spacecraft at the right temperature comes down entirely to balancing heat radiated away against heat absorbed, while stray oxygen atoms in low orbit slowly eat away at exposed plastics.</p></div>
+    <div class="card"><span class="lbl">Regulatory</span><h5>Export control &amp; licensing</h5>
+      <p>Almost any piece of space hardware could also be a missile part — that is just true by nature. International export rules end up shaping supply chains, partnerships, and even which specific components an engineer in a given country is legally allowed to touch. Often that legal constraint is a bigger obstacle than the engineering itself.</p></div>
+    <div class="card"><span class="lbl">Safety</span><h5>Energy density</h5>
+      <p>A fully fuelled rocket is one of the biggest concentrations of raw energy humans ever assemble outside a nuclear weapon. That is exactly why launches have exclusion zones, safety officers, and self-destruct systems built in — when something goes wrong, it tends to go wrong as an explosion, as a Delta II rocket demonstrated when it blew up on the pad in 1997.</p></div>
+    <div class="card"><span class="lbl">Astronomical</span><h5>Dark and quiet skies</h5>
+      <p>Thousands of satellites streaking across the sky leave bright trails that ruin long-exposure astronomical photos, and their transmissions can bleed into frequencies reserved for radio telescopes. Builders now routinely design around this — dulling reflective coatings, tilting satellites at dawn and dusk when they are most visible, and avoiding certain radio bands altogether.</p></div>
+  </div>
+</section>
+
+<section id="c11">
+  <div class="chead"><span class="num">11</span><h2>Milestones</h2><span class="kick">Appendix · the record</span></div>
+  <p class="dek">The moments that each, for the first time, proved something was actually possible.</p>
+</section>
+</div>
+
+<div class="bleed">
+<div class="scroll"><table>
+  <tr><th class="n">Date</th><th>Event</th><th>What it proved for the first time</th></tr>
+  <tr><td class="n">20 Jun 1944</td><td>V-2 suborbital flight</td><td>A liquid-fuelled rocket reaches space — 176 km altitude.</td></tr>
+  <tr><td class="n">4 Oct 1957</td><td>Sputnik 1</td><td>Orbital velocity is achievable. An 83 kg sphere opens the space age.</td></tr>
+  <tr><td class="n">14 Sep 1959</td><td>Luna 2</td><td>A human-made object reaches another world, by impact.</td></tr>
+  <tr><td class="n">7 Oct 1959</td><td>Luna 3</td><td>Proved you could photograph something no human eye had ever seen: the Moon's far side.</td></tr>
+  <tr><td class="n">12 Apr 1961</td><td>Vostok 1 · Gagarin</td><td>A human survives launch, orbit and re-entry.</td></tr>
+  <tr><td class="n">24 Dec 1968</td><td>Apollo 8</td><td>Proved humans could leave Earth orbit entirely and be pulled in by another world's gravity.</td></tr>
+  <tr><td class="n">20 Jul 1969</td><td>Apollo 11 · Armstrong</td><td>Crewed landing on and return from another world.</td></tr>
+  <tr><td class="n">17 Nov 1970</td><td>Lunokhod 1</td><td>Robotic surface mobility — the first rover on another world.</td></tr>
+  <tr><td class="n">Dec 1972</td><td>Apollo 17 · Cernan</td><td>The last human on the Moon to date; the end of the first era.</td></tr>
+  <tr><td class="n">25 Aug 2012</td><td>Voyager 1</td><td>Left the Sun's bubble of influence and entered true interstellar space — still transmitting today, over 145 times farther from the Sun than Earth is.</td></tr>
+  <tr><td class="n">14 Jul 2023</td><td>Chandrayaan-3</td><td>Soft landing near the lunar south pole, in the water-ice region.</td></tr>
+</table></div>
+</div>
+
+<div class="col">
+  <hr class="rule" style="margin:56px 0 24px">
+  <p class="lbl" style="line-height:1.8">Built as a first-principles value chain starting from the Wikipedia article
+  <a href="https://en.wikipedia.org/wiki/Space_technology">Space technology</a>, with the numbers drawn
+  from standard references on orbital mechanics and rocket propulsion. Figures for performance, price and
+  object counts are rough, order-of-magnitude estimates current to 2025–2026; anything describing hardware
+  still being tested is clearly labelled as a target, not a proven result.</p>
+</div>
+</main>
+</div>
+
+<script>
+(function(){
+  var dv=document.getElementById('dv'), isp=document.getElementById('isp');
+  var dvv=document.getElementById('dvv'), ispv=document.getElementById('ispv');
+  var dvn=document.getElementById('dvn'), ispn=document.getElementById('ispn');
+  var mr=document.getElementById('mr'), pf=document.getElementById('pf');
+  var bp=document.getElementById('bprop'), bd=document.getElementById('bdry'), vd=document.getElementById('verdict');
+  var rf=document.getElementById('rfuel'), rd=document.getElementById('rdry');
+  function dvName(v){
+    if(v<3000) return 'Station keeping / small transfer';
+    if(v<5000) return 'LEO to lunar injection';
+    if(v<8000) return 'Upper-stage class burn';
+    if(v<10200) return 'Low Earth orbit, single stage';
+    if(v<12500) return 'Geostationary transfer';
+    if(v<14500) return 'Geostationary or lunar surface';
+    return 'Interplanetary, single stage';
+  }
+  function ispName(v){
+    if(v<250) return 'Monopropellant hydrazine';
+    if(v<300) return 'Solid motor, APCP';
+    if(v<332) return 'Hypergolic storable';
+    if(v<362) return 'Kerolox, gas generator';
+    if(v<400) return 'Methalox, full-flow staged';
+    return 'Hydrolox, upper stage';
+  }
+  function calc(){
+    var d=+dv.value, i=+isp.value;
+    var ratio=Math.exp(d/(i*9.80665));
+    var frac=100/ratio;
+    dvv.textContent=d; ispv.textContent=i;
+    dvn.textContent=dvName(d); ispn.textContent=ispName(i);
+    mr.textContent=ratio.toFixed(ratio<100?1:0)+' : 1';
+    pf.textContent=frac.toFixed(2)+' %';
+    bp.style.width=(100-frac)+'%'; bd.style.width=frac+'%';
+    var bodyTop=4, bodyBottom=220, bodyH=bodyBottom-bodyTop;
+    var hardH=bodyH*Math.min(frac,100)/100;
+    rd.setAttribute('y',bodyTop); rd.setAttribute('height',hardH);
+    rf.setAttribute('y',bodyTop+hardH); rf.setAttribute('height',bodyH-hardH);
+    var msg;
+    if(frac<3) msg='No chemical rocket could survive this. You simply cannot build a tank and engine light enough — this is exactly why nobody has ever flown a single rocket straight to orbit without dropping parts along the way.';
+    else if(frac<8) msg='Doable, but only by staging — dropping empty tanks as you climb. The rocket\'s own skeleton usually eats 5–10% of the weight budget by itself, so whatever is left over after it pays for its own body is your cargo.';
+    else if(frac<20) msg='Comfortable territory. This is where upper stages and in-orbit manoeuvres live — real breathing room for structure, electronics, and actual cargo.';
+    else msg='Plenty of margin. At this ratio the engine is barely the limiting factor anymore — the easy world of small in-space nudges, like keeping a satellite in its lane.';
+    vd.textContent='→ '+msg;
+  }
+  dv.addEventListener('input',calc); isp.addEventListener('input',calc); calc();
+
+  var orbalt=document.getElementById('orbalt');
+  if(orbalt){
+    var orbMU=398600.4418, orbRE=6371;
+    var orbLogMin=2, orbLogMax=Math.log10(1600000);
+    var orbMarker=document.getElementById('orbmarker'), orbMarkerLbl=document.getElementById('orbmarkerlbl');
+    var orbAltV=document.getElementById('orbaltv'), orbPeriod=document.getElementById('orbperiod');
+    var orbVel=document.getElementById('orbvel'), orbRegime=document.getElementById('orbregime');
+    function orbRegimeInfo(alt){
+      if(alt<2000) return ['Low Earth orbit','var(--oxide)'];
+      if(alt<31000) return ['Medium Earth orbit','var(--phos)'];
+      if(alt<40500) return ['Geostationary belt','var(--phos)'];
+      if(alt<200000) return ['High Earth orbit','var(--gold)'];
+      return ['Deep space / Lagrange','var(--ink3)'];
+    }
+    function fmtAlt(km){
+      if(km<1000) return Math.round(km)+' km';
+      return Math.round(km).toLocaleString()+' km';
+    }
+    function fmtPeriod(sec){
+      if(sec<3600) return (sec/60).toFixed(0)+' min';
+      if(sec<86400) return (sec/3600).toFixed(1)+' h';
+      return (sec/86400).toFixed(1)+' d';
+    }
+    function orbCalc(){
+      var frac=(+orbalt.value)/1000;
+      var logAlt=orbLogMin+frac*(orbLogMax-orbLogMin);
+      var alt=Math.pow(10,logAlt);
+      var r=orbRE+alt;
+      var period=2*Math.PI*Math.sqrt((r*r*r)/orbMU);
+      var vel=Math.sqrt(orbMU/r);
+      var x=330+180*(logAlt-2);
+      x=Math.max(150,Math.min(1030,x));
+      orbMarker.setAttribute('transform','translate('+(x-330)+',0)');
+      orbMarkerLbl.textContent=fmtAlt(alt);
+      orbAltV.textContent=fmtAlt(alt);
+      orbPeriod.textContent=fmtPeriod(period);
+      orbVel.textContent=vel.toFixed(2)+' km/s';
+      var info=orbRegimeInfo(alt);
+      orbRegime.textContent=info[0];
+      orbRegime.style.color=info[1];
+      orbMarkerLbl.setAttribute('fill',info[1]);
+    }
+    orbalt.addEventListener('input',orbCalc);
+    orbCalc();
+  }
+
+  var links=[].slice.call(document.querySelectorAll('.rail a'));
+  var secs=links.map(function(a){return document.querySelector(a.getAttribute('href'));});
+  var io=new IntersectionObserver(function(es){
+    es.forEach(function(e){
+      if(e.isIntersecting){
+        var i=secs.indexOf(e.target);
+        links.forEach(function(l,j){l.classList.toggle('on',j===i);});
+      }
+    });
+  },{rootMargin:'-10% 0px -70% 0px'});
+  secs.forEach(function(s){if(s)io.observe(s);});
+})();
+</script>
+<script src="atlas/engines.js"></script>
+<script src="atlas/engines-more.js"></script>
+<script src="atlas/atlas.js"></script>
+<script src="atlas/models.js"></script>
